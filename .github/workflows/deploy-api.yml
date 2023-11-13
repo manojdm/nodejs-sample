@@ -28,13 +28,13 @@ jobs:
         run: |
           if [[ "${GITHUB_EVENT_NAME}" != "release" || "${{ github.event.inputs.environment }}" == "alpha" ]]; then
             ENVIRONMENT="alpha"
-            DEPLOYER_ROLE="arn:aws:iam::428239655465:role/github-action-api-alpha"
+            DEPLOYER_ROLE="arn:aws:iam::107307641110:role/github-action-api-alpha"
             ECR_REPOSITORY="alpha-api"
           elif [[ "${{ github.event.release.prerelease }}" == "true" || "${{ github.event.inputs.environment }}" == "staging" ]]; then
             ENVIRONMENT="staging"
           else
             ENVIRONMENT="production"
-            DEPLOYER_ROLE="arn:aws:iam::843692268252:role/github-action-api-production"
+            DEPLOYER_ROLE="arn:aws:iam::8436922682:role/github-action-api-production"
             ECR_REPOSITORY="production-api"
           fi
 
