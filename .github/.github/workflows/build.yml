@@ -1,0 +1,32 @@
+on:
+  pull_request:
+
+name: Build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.15
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Start application and log output
+        run: npm start > app.log 2>&1 &
+
+      - name: Monitor logs and stop when specific message is found
+        run: |
+          while ! grep -q "Server started on port 5500" app.log || ! grep -q "DB Successfully connected!!" app.log; do
+              sleep 10 # Adjust the polling interval as needed
+          done
