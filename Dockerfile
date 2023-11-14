@@ -16,5 +16,6 @@ COPY . .
 # Expose the port your application will listen on
 EXPOSE 5500
 
+
 # Define the command to start your Node.js application
 CMD ["node", "src/server.js"]
