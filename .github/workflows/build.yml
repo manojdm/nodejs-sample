@@ -27,6 +27,6 @@ jobs:
 
       - name: Monitor logs and stop when specific message is found
         run: |
-          while ! grep -q "Server started on port 5500" app.log || ! grep -q "DB Successfully connected!!" app.log; do
+          while ! grep -q "Server started on port 80" app.log || ! grep -q "DB Successfully connected!!" app.log; do
               sleep 10 # Adjust the polling interval as needed
           done

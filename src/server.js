@@ -6,6 +6,6 @@ app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
 
-app.listen("5500", () => {
+app.listen("80", () => {
 	console.log("Server is running...");
 });
