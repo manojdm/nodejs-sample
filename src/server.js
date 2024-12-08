@@ -1,12 +1,15 @@
 import express from "express";
 const app = express();
-const port = 5500;
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-	res.send("Hello, World!");
+  res.send("Hello, World!");
 });
 
-const server = app.listen(port, () => {
-	const address = server.address();
-	console.log(`Server listening at http://${address.address}:${address.port}`);
-});
+if (process.env?.NODE_ENV === "development") {
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
+}
+
+export default app;
